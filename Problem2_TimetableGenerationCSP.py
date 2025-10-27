@@ -19,7 +19,7 @@ professors = {
 time_slots = [(d, s) for d in days for s in range(1, slots_per_day + 1)]
 
 
-# ---------------- Helper functions ----------------
+# Helper functions 
 def print_timetable(timetable):
     print("\n=== Generated Timetable ===")
     grid = {day: ["---"] * slots_per_day for day in days}
@@ -37,7 +37,7 @@ def no_conflict(course, slot, timetable):
     return True
 
 
-# ---------------- Heuristic Backtracking ----------------
+# Heuristic Backtracking 
 def backtrack_heuristic(timetable, unassigned):
     global backtrack_count1
     if not unassigned:
@@ -57,7 +57,7 @@ def backtrack_heuristic(timetable, unassigned):
     return False
 
 
-# ---------------- Forward Checking ----------------
+# Forward Checking
 def forward_checking(timetable, unassigned, domains):
     global backtrack_count2
     if not unassigned:
@@ -78,7 +78,7 @@ def forward_checking(timetable, unassigned, domains):
     return False
 
 
-# ---------------- Run multiple times and average ----------------
+# Run multiple times and average 
 runs = 5
 avg_time_bt = 0
 avg_time_fc = 0
@@ -104,7 +104,7 @@ for i in range(runs):
     avg_time_fc += time.perf_counter() - start2
     avg_fc_count += backtrack_count2
 
-# ---------------- Display average results ----------------
+# Display average results 
 avg_time_bt /= runs
 avg_time_fc /= runs
 avg_bt_count //= runs
@@ -121,3 +121,4 @@ print("\n=== Average Comparison Over Multiple Runs ===")
 print(f"{'Method':35} {'Avg Time (s)':<15} {'Avg Backtracks'}")
 print(f"{'Heuristic Backtracking':35} {avg_time_bt:.5f}         {avg_bt_count}")
 print(f"{'Forward Checking':35} {avg_time_fc:.5f}         {avg_fc_count}")
+
